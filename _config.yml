@@ -16,4 +16,4 @@ tags_path : /tags.html
 atom_path : /atom.xml
 rss_path : /rss.xml
 sitemap_path : /sitemap.xml
-about_path : /readme.xml
+about_path : /README.html
