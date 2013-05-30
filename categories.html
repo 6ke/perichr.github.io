@@ -1,0 +1,18 @@
+---
+layout: archive
+title: Categories
+---
+<ul class="meta" id="cates">
+  {% assign categories_list = site.categories %}
+  {% include mod/categories_list %}
+</ul>
+
+
+{% for category in site.categories %} 
+  <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>
+  <ul>
+    {% assign pages_list = category[1] %}  
+    {% include mod/pages_list %}
+  </ul>
+{% endfor %}
+

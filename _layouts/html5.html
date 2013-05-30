@@ -5,19 +5,10 @@ layout: nil
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<!--[if lt IE 9]>
-<script src="assets/js/htmlshiv.js"></script>
-<![endif]-->
-{% if page.type %}
-<link href="{{ site.url.production }}/assets/css/{{ page.type }}.css"  rel="stylesheet" />
-<!--[if lt IE 9]>
-<link href="{{ site.url.production }}/assets/css/{{ page.type }}-old.css"  rel="stylesheet"  />
-<![endif]-->
-{% else %}
-<link href="{{ site.url.production }}/assets/css/post.css"  rel="stylesheet" />
-<!--[if lt IE 9]>
-<link href="{{ site.url.production }}/assets/css/post-old.css"  rel="stylesheet"  />
-<![endif]-->
+<!--[if lt IE 9]><script src="assets/js/htmlshiv.js"></script><![endif]-->
+{% if page.type %}<link href="{{ site.url.production }}/assets/css/{{ page.type }}.css"  rel="stylesheet" />
+<!--[if lt IE 9]><link href="{{ site.url.production }}/assets/css/{{ page.type }}-old.css"  rel="stylesheet"  /><![endif]-->
+{% if page.type == 'post' or page.type == 'page' %}<link href="{{ site.url.production }}/assets/css/entry.css" rel="stylesheet"/>{% endif %}
 {% endif %}
 <title>{{ page.title }}/{{ site.title }}</title>
 </head>
@@ -28,11 +19,11 @@ layout: nil
 	<nav id="navigate">
 	<ul>
 	  <li><a title="首页" href="{{ site.url.production }}">:P</a></li>
-	  <li><a title="DEV:P" href="http://dev.perichr.org" rel="external">DEV:P</a></li>
+	  <li><a title="DEV:P" href="http://dev.perichr.org" rel="external">DEV:P/404</a></li>
 	  <li><a title="关于" href="{{ site.url.production }}{{ site.about_path }}">About</a></li>
-	  <li><a title="分类" href="{{ site.url.production }}{{ site.categories_path }}">Cates/404</a></li>
-	  <li><a title="标签" href="{{ site.url.production }}{{ site.tags_path }}">Tags/404</a></li>
-	  <li><a title="归档" href="{{ site.url.production }}{{ site.archive_path }}">Archive/404</a></li>
+	  <li><a title="分类" href="{{ site.url.production }}{{ site.categories_path }}">Cates</a></li>
+	  <li><a title="标签" href="{{ site.url.production }}{{ site.tags_path }}">Tags</a></li>
+	  <li><a title="归档" href="{{ site.url.production }}{{ site.archive_path }}">Archive</a></li>
 	  <li><a title="Atom" href="{{ site.url.production }}{{ site.atom_path }}">A</a><a title="Rss" href="{{ site.url.production }}{{ site.rss_path }}">R</a><a title="Sitemap" href="{{ site.url.production }}{{ site.sitemap_path }}">S</a></li>
 	  <li><a title="Fork on GitHub" href="{{ site.url.github }}" rel="external">Fork</a></li>
 	</ul>
@@ -41,7 +32,8 @@ layout: nil
 <section id="content">{{ content }}</section>
 <footer id="copyright">
   <span>&copy;<a href="{{ site.url.production }}" rel="me">perichr.org</a>Some Right Reserved.</span>
-  <span>(IE 9+ or the last version of Fx/Ch/Op)</span>
+  <span>Powered by<a href="http://pages.github.com" rel="external">Github Pages</a>.</span>
+  <span>(IE9+/Fx/Ch/Op)</span>
 </footer>
 
 </body>
