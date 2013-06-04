@@ -1,18 +1,7 @@
-body{
-background:black url(background.jpg) fixed repeat top left;
-color:white;
-font-family:"微软雅黑",Arial;
-padding-right:3em;
-}
-a{
-color:white;
-}
+@import url(reset.css);
 
-body>header a{
-text-decoration:none;
-}
-body>header a:hover{
-text-decoration:underline;
+body{
+padding-right:3em;
 }
 
 body>header{
@@ -139,46 +128,10 @@ display: none;
 
 }
 
-header li {
-opacity:0.5;
+.posts li a{
+display:inline;
 }
-header li:hover{
-opacity:1;
-}
-header li:nth-child(7n+1){
-background:red;
-}
-header li:nth-child(7n+2){
-color:black;
-background:orange;
-}
-header li:nth-child(7n+3){
-color:black;
-background:yellow;
-}
-header li:nth-child(7n+4){
-background:green;
-}
-header li:nth-child(7n+5){
-background:blue;
-}
-header li:nth-child(7n+6){
-background:indigo;
-}
-header li:nth-child(7n){
-background:purple;
-}
-header li a{
-display:block;
-padding:.5em 1em;
-color:white;
-}
-header li:nth-child(7n+2) a{
-color:black;
-}
-header li:nth-child(7n+3) a{
-color:black;
-}
+
 
 body>footer{
 font-size:75%;

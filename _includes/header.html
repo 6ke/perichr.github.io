@@ -1,0 +1,16 @@
+<header>
+	<div id="title">{{ site.title }}</div>
+	<div id="description">{{ site.description }}</div>
+	<nav id="navigate">
+	<ul>
+	  <li><a title="首页" href="{{ site.url.production }}">:P</a></li>
+	  <li><a title="DEV:P" href="http://dev.perichr.org" rel="external">DEV:P/404</a></li>
+	  <li><a title="关于" href="{{ site.url.production }}{{ site.about_path }}">About</a></li>
+	  <li><a title="分类" href="{{ site.url.production }}{{ site.categories_path }}">Cates</a></li>
+	  <li><a title="标签" href="{{ site.url.production }}{{ site.tags_path }}">Tags</a></li>
+	  <li><a title="归档" href="{{ site.url.production }}{{ site.archive_path }}">Archive</a></li>
+	  <li><a title="Atom" href="{{ site.url.production }}{{ site.atom_path }}">A</a><a title="Rss" href="{{ site.url.production }}{{ site.rss_path }}">R</a><a title="Sitemap" href="{{ site.url.production }}{{ site.sitemap_path }}">S</a></li>
+	  <li><a title="Fork on GitHub" href="{{ site.url.github }}" rel="external">Fork</a></li>
+	</ul>
+	</nav>
+</header>

@@ -1,0 +1,50 @@
+---
+layout: archive
+title : 404什么都没有
+---	
+	<p>查找的页面不存在！</p>
+	<script type="text/javascript" src="assets/js/underscore-min.js"></script>
+    <script type="text/javascript">
+    	document.write('<p>上网累了，不如休息下，玩把打砖块吧！一共才五万块砖哦！</p>');
+    	var content=document.querySelector('#content>article'),
+    	swf=document.createElement('div')
+    	;
+
+    	content.appendChild(swf);
+    	swf.appendChild(restartDZK());
+    	swf.appendChild(imgDZK());
+
+    	function click(){
+    		swf.innerHTML='';
+	    	swf.appendChild(restartDZK());
+	    	swf.appendChild(embedDZK());
+    	}
+
+    	function restartDZK(){
+    		var obj=document.createElement('div');
+    		obj.id='restartDZK';
+    		obj.style.cssText='display:block;text-align:center;width:465px;height:2em;cursor:pointer';
+    		obj.textContent='点击开始玩！';
+    		obj.addEventListener('click',click);
+    		return obj;
+    	}
+    	function embedDZK(){
+    		var obj=document.createElement('embed');
+    		obj.width=465;
+    		obj.height=465;
+    		obj.src='assets/swf/u148.swf';
+    		return obj;
+    	}
+    	function imgDZK(){
+    		var obj=document.createElement('img');
+    		obj.width=465;
+    		obj.height=465;
+    		obj.src='data:image/png;base64,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';
+    		obj.addEventListener('click',click);
+    		return obj;
+    	}
+
+
+
+   </script>
+

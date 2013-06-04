@@ -1,18 +1,4 @@
-body{
-background:black url(background.jpg) no-repeat top center;
-color:white;
-font-family:"微软雅黑",Arial;
-}
-a{
-color:white;
-}
-
-body>header a{
-text-decoration:none;
-}
-body>header a:hover{
-text-decoration:underline;
-}
+@import url(reset.css);
 
 body>header,body>footer,#content{
 text-align:center;
@@ -87,46 +73,6 @@ text-indent:2em;
 }
 #content ul{
 list-style:none;
-}
-li {
-opacity:0.5;
-}
-li:hover{
-opacity:1;
-}
-li:nth-child(7n+1){
-background:red;
-}
-li:nth-child(7n+2){
-color:black;
-background:orange;
-}
-li:nth-child(7n+3){
-color:black;
-background:yellow;
-}
-li:nth-child(7n+4){
-background:green;
-}
-li:nth-child(7n+5){
-background:blue;
-}
-li:nth-child(7n+6){
-background:indigo;
-}
-li:nth-child(7n){
-background:purple;
-}
-li a{
-display:block;
-padding:.5em 1em;
-color:white;
-}
-li:nth-child(7n+2) a{
-color:black;
-}
-li:nth-child(7n+3) a{
-color:black;
 }
 
 
