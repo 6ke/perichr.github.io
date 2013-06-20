@@ -4,7 +4,33 @@ text-shadow:0 0 .2em white;
 #content h1, #content h2, #content h3, #content h4 {
     font-weight: bold;
 }
-#content h1, #content h2, #content h3, #content h4, #content h5, #content p {
+#content h1, #content h2, #content h3{
+position: relative;
+border-left:.2em solid red;
+padding-left:1.6em;
+margin-bottom: 1em;
+}
+#content h1:before,#content h2:before,#content h3:before{
+position: absolute;
+left:0;
+content:'　';
+display: inline-block;
+width:.2em;
+border-left:.2em solid orange;
+background-color: yellow;
+border-right:.2em solid green;
+}
+#content h1:after,#content h2:after,#content h3:after{
+position: absolute;
+left:.6em;
+content:'　';
+width:.2em;
+display: inline-block;
+border-left:.2em solid blue;
+background-color: indigo;
+border-right:.2em solid purple;
+}
+#content h4, #content h5, #content p {
     margin-bottom: 1em;
     padding: 0;
 }
