@@ -1,0 +1,55 @@
+body{
+	background:black url(background.jpg) fixed repeat top left;
+	color:white;
+	font-family:"微软雅黑",Arial;
+	&>header a{
+		text-decoration:none;
+		&:hover{
+			text-decoration:underline;
+		}
+	}
+}
+a{
+	color:white;
+}
+li {
+	opacity:0.5;
+	&:hover{
+		opacity:1;
+	}
+	&:nth-child(7n+1){
+		background:red;
+	}
+	&:nth-child(7n+2){
+		color:black;
+		background:orange;
+		a{
+			color:black;
+		}
+	}
+	&:nth-child(7n+3){
+		color:black;
+		background:yellow;
+		a{
+			color:black;
+		}
+	}
+	&:nth-child(7n+4){
+		background:green;
+	}
+	&:nth-child(7n+5){
+		background:blue;
+	}
+	&:nth-child(7n+6){
+		background:indigo;
+	}
+	&:nth-child(7n){
+		background:purple;
+	}
+	a{
+		display:block;
+		padding:.5em 1em;
+		color:white;
+	}
+}
+
