@@ -1,0 +1,152 @@
+---
+layout: nil
+title: 主页
+---
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--[if lt IE 9]><script src="assets/js/htmlshiv.js"></script><![endif]-->
+<style>
+@font-face{font-family:'Poiret One';font-style:normal;font-weight:400;src:local('Poiret One'),local('PoiretOne-Regular'),url(http://themes.googleusercontent.com/static/fonts/poiretone/v1/HrI4ZJpJ3Fh0wa5ofYMK8RsxEYwM7FgeyaSgU71cLG0.woff) format('woff')}
+html{
+	height:100%;
+}
+body{
+	margin:0;
+	padding:0;
+	height:100%;
+	background: white url(assets/css/bg.png) repeat scroll top;
+	font-family: '微软雅黑', sans-serif;
+}
+header{
+	position: fixed;
+	z-index:101;
+	border-bottom:0.1em solid gray;
+	top:0;
+	left:0;
+	right:0;
+	padding-left:3em;
+	background:rgba(255,255,255,.75);
+	font-family: 'Poiret One',;
+}
+header>*{
+	display: inline-block;
+	padding:0;
+}
+a{
+	text-decoration:none;	
+	font-weight:bolder;
+}
+a:hover{
+	text-shadow: rgba(0,0,0,.3) 0 0 0.2em;
+}
+li>a:hover{
+	box-shadow: rgba(0,0,0,.5) 0 0 0.5em;
+}
+ul{
+	list-style:none;
+}
+li>a{
+	transition:all 1s ease-in,.5s ease-out;
+	max-width:10em;
+	border:0.5em solid transparent;
+	text-align:center;
+	display: inline-block;
+	padding:1em;
+	background: white;
+}
+</style>
+<title>{{ site.title }}</title>
+</head>
+<body>
+<header id="siteinfo">
+	<div id="title"><a title="title" href="{{ site.url.production }}" rel="me">{{ site.title }}</a></div>
+	<p id="description">{{ site.description }}</p>
+</header>
+<nav>
+	<ul>
+		<li><a class="email" href="mailto:i@perichr.org">邮箱</a></li>
+		<li><a href="javascript:alert('骗你的！才没有果照呢！')"><del>果照</del></a></li>
+		<li><a href="#">Blog</a></li>
+		<li><a href="http://github.com/perichr">Github</a></li>
+		<li><a href="http://segmentfault.com/u/perichr">segmentfault</a></li>
+	</ul>
+</nav>
+<script>
+(function(){
+'use strict';
+HTMLElement.prototype.__defineGetter__("currentStyle", function () { 
+	return this.ownerDocument.defaultView.getComputedStyle(this, null); 
+}); 
+var html = query('html'), body = query('body'), box = body
+addListener(html, 'click', change)
+window.onresize = change
+each(queryAll('li'), function (item) {
+	item.style.position = 'fixed'
+	move(item)
+})
+each(queryAll('li>a'), function (item) {
+	item.style.height = 
+	item.style.lineHeight = item.currentStyle.width
+	item.style.borderRadius = (2 * item.clientWidth ) + 'px'
+})
+
+change()
+function change() {
+	each(queryAll('li>a'), function (item) {
+		var rgba = randomRGBA()
+		item.style.color = 'rgba(' + rgba[0] + ',' + rgba[1] + ',' + rgba[2] + ',' + (0.3 * rgba[3] + 0.7) + ')'
+		item.style.borderColor = 'rgba(' + rgba[0] + ',' + rgba[1] + ',' + rgba[2] + ',' + (0.5 * rgba[3] + 0.25) + ')'
+		item.style.backgroundColor = 'rgba(' + rgba[0] + ',' + rgba[1] + ',' + rgba[2] + ',' + (0.25 * rgba[3]) + ')'
+		item.style.transform = 
+		item.style.webkitTransform = 
+		item.style.mozTransform = 
+		item.style.oTransform = 
+			'rotate(' + 60*(Math.random()-0.5) + 'deg)'
+		 move(item.parentNode)
+	})
+}
+function move(item) {
+	var w = item.clientWidth
+	item.style.top = w + (html.clientHeight - 2 * w) * Math.random() + 'px'
+	item.style.left = w + (html.clientWidth - 2 * w) * Math.random()  + 'px'
+	item.style.zIndex = parseInt(100 * Math.random())
+}
+function randomRGBA(){
+	return [parseInt(255 * Math.random()), parseInt(255 * Math.random()), parseInt(255 * Math.random()), Math.random()]
+}
+
+//sweet suger...
+function query(name) {return document.querySelector(name)}
+function queryAll(name) {return document.querySelectorAll(name)}
+function addListener(element,e,fn) {
+	if(element.addEventListener) element.addEventListener(e,fn,false)
+	else element.attachEvent("on" + e,fn)
+}
+function each(obj, iterator, context) {
+	var nativeForEach = Array.prototype.forEach, breaker = {}
+	if (obj == null) return
+	if (nativeForEach && obj.forEach === nativeForEach) {
+		obj.forEach(iterator, context)
+	} else if (obj.length === +obj.length) {
+		for (var i = 0, length = obj.length; i < length; i++) {
+			if (iterator.call(context, obj[i], i, obj) === breaker) return
+		}
+	} else {
+		var keys = _.keys(obj);
+		for (var i = 0, length = keys.length; i < length; i++) {
+			if (iterator.call(context, obj[keys[i]], keys[i], obj) === breaker) return
+		}
+	}
+}
+function times(n, iterator, context) {
+	var accum = Array(Math.max(0, n))
+	for (var i = 0; i < n; i++) accum[i] = iterator.call(context, i)
+	return accum
+}
+})()
+</script>
+<!--我才不告诉你我是抄的 http://qinshou.me/ 的代码呢！！-->
+</body>
+</html>

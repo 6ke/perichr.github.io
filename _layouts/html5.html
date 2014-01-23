@@ -5,14 +5,16 @@ layout: nil
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-{% if page.type %}<link href="{{ site.url.production }}/assets/css/{{ page.type }}.css"  rel="stylesheet" />
-<!--[if lt IE 9]><script src="assets/js/htmlshiv.js"></script><link href="{{ site.url.production }}/assets/css/{{ page.type }}-old.css"  rel="stylesheet"  /><![endif]-->
-{% endif %}
-<title>{{ page.title }}/{{ site.title }}</title>
+<!--[if lt IE 9]><script src="assets/js/htmlshiv.js"></script><![endif]-->
+<link href="{{ site.url.production }}/assets/css/mili.css"  rel="stylesheet" />
+<title>{{ page.title }} @ {{ site.title }}</title>
 </head>
-<body>
-{% include header.html %}
-<section id="content">{{ content }}</section>
-{% include footer.html %}
+<body id="{{ page.type }}">
+<header id="siteinfo">
+	<div id="title"><a title="title" href="{{ site.url.production }}" rel="me">{{ site.title }}</a></div>
+	<p id="description">{{ site.description }}</p>
+</header>
+{{ content }}
+{% include aside.html %}
 </body>
 </html>

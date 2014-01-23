@@ -1,0 +1,13 @@
+---
+layout: html5
+title: 首页
+type: index
+---
+<section>
+{% for post in site.posts %}
+<article pubdate="{{ post.date }}">
+<h1><a href="(index/..{{ post.url }}">{{ post.title }}</a></h1>
+{{ post.content }}
+</article>
+{% endfor %}
+</section>

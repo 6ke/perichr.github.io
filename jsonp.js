@@ -14,4 +14,4 @@ layout: nil
 ,id:"{{ site.url }}{{ post.id }}"
 },{% endfor %}
 {}]
-}));
+}))

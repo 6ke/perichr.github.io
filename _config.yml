@@ -1,19 +1,28 @@
 markdown: rdiscount
 pygments: true
-title: DEV.P站
+
+title: DEV:P~!
 description: 野生党的领地
+
 author :
   name : perichr
   email : i@perichr.org
   github : perichr
+  
 url :
   production : http://perichr.org
   github: https://github.com/perichr/perichr.github.io
 
-archive_path: /archive.html
-categories_path : /categories.html
-tags_path : /tags.html
-atom_path : /atom.xml
-rss_path : /rss.xml
-sitemap_path : /sitemap.xml
-about_path : /README.html
+path:
+  blog : /blog.html
+  archive : /archive.html
+  categories : /categories.html
+  tags : /tags.html
+  atom : /atom.xml
+  rss : /rss.xml
+  sitemap : /sitemap.xml
+  about : /about.html
+  jsonp : /jsonp.js
+
+config:
+  disqus : perichr
