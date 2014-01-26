@@ -15,7 +15,7 @@ body{
 	margin:0;
 	padding:0;
 	background: white url(assets/css/bg.png) repeat scroll top;
-	font-family: '微软雅黑', sans-serif;
+	font-family: 'Poiret One', '微软雅黑', '黑体', Verdana;
 }
 header{
 	position: fixed;
@@ -26,7 +26,6 @@ header{
 	right:0;
 	padding-left:3em;
 	background:rgba(255,255,255,.75);
-	font-family: 'Poiret One',;
 }
 header>*{
 	display: inline-block;
@@ -35,47 +34,60 @@ header>*{
 a{
 	text-decoration:none;	
 	font-weight:bolder;
+	color:gray;
 }
 a:hover{
 	text-shadow: rgba(0,0,0,.3) 0 0 0.2em;
 }
-li>a:hover{
-	box-shadow: rgba(0,0,0,.5) 0 0 0.5em;
-}
-li:nth-child(1)>a{
-	top:3em;
-	left:1em;
-}
-li:nth-child(2)>a{
-	top:8em;
-	left:1em;
-}
-li:nth-child(3)>a{
-	top:13em;
-	left:1em;
-}
-li:nth-child(4)>a{
-	top:18em;
-	left:1em;
-}
-li:nth-child(5)>a{
-	top:23em;
-	left:1em;
-}
-ul{
+#navigation ul{
 	list-style:none;
 }
-
-li>a{
-	position: fixed;
+#navigation a{
 	transition:all 1s ease-in-out;
-	max-width:10em;
 	border:0.5em solid rgba(0,0,0,0.1);
 	text-align:center;
-	display: inline-block;
 	padding:1em;
 	background: white;
 	border-radius:0;
+}
+#navigation a:hover{
+	box-shadow: rgba(0,0,0,.5) 0 0 0.5em;
+}
+#box{
+	position: fixed;
+	background: white;
+	top: 50%;
+	left: 50%;
+	background-clip:content-box;
+	box-sizing:border-box;
+	border:1em solid rgba(0,0,0,.2);
+	border-radius:1em;
+	z-index:102;
+	transition:all .2s ease-in-out;
+	overflow:auto;
+}
+#box.hide{
+	opacity : 0;
+}
+#box.show{
+	opacity : 1;
+}
+#box_close{
+	position: absolute;
+	z-index:100;
+	right:1em;
+	top:0;
+	display: none;
+	cursor:pointer;
+	font-size:0.7em;
+	background: white;
+}
+#box:hover #box_close{
+	display: block;
+}
+#box>*:nth-child(2){
+	margin:0;
+	padding:1em;
 }
 </style>
 <title>{{ site.title }}</title>
@@ -85,34 +97,75 @@ li>a{
 	<div id="title"><a title="title" href="{{ site.url.production }}" rel="me">{{ site.title }}</a></div>
 	<p id="description">{{ site.description }}</p>
 </header>
-<nav>
+<nav id="navigation">
 	<ul>
-		<li><a class="email" href="mailto:i@perichr.org">邮箱</a></li>
-		<li><a href="javascript:alert('骗你的！才没有果照呢！')"><del>果照</del></a></li>
-		<li><a href="#">Blog</a></li>
+		<li><a class="email" href="mailto:i@perichr.org">email</a></li>
+		<li><a href="#guozhao" id="guozhao"><del>果照</del></a></li>
+		<li><a href="blog.html" id="blog">Blog</a></li>
 		<li><a href="http://github.com/perichr">Github</a></li>
 		<li><a href="http://segmentfault.com/u/perichr">segmentfault</a></li>
 	</ul>
 </nav>
 <script>
-(function(){
 'use strict';
 HTMLElement.prototype.__defineGetter__("currentStyle", function () { 
 	return this.ownerDocument.defaultView.getComputedStyle(this, null); 
-}); 
-var html = query('html'), body = query('body'), box = body
-addListener(html, 'click', change)
-each(queryAll('li>a'), function (item) {
-	item.style.height = 
-	item.style.lineHeight = item.currentStyle.width
-	item.style.borderRadius = (2 * item.clientWidth ) + 'px'
-	addListener(item, 'mouseover', change)
-})
-window.onresize = change
-setTimeout(change, 500)
+});
+var html = query('html'),
+	body = query('body'),
+	box = createBox(),
+	hidden = createHiddenArea(),
+	content_archives = createArchives(),
+	disqus_shortname = window.disqus_shortname = '{{ site.config.disqus }}',
+	content_guestbook = createGuestBook()
+
+//window.onload = load
+load()
+function load() {
+	query('#navigation ul').innerHTML += '<li><a href="#" id="guestbook">GuestBook</a></li>'
+	window.onresize = event_resize
+	addListener(html, 'click', change)
+	addListener(query('#navigation'), 'mouseover', change)
+	addListener(query('#guestbook'), 'click', event_guestbook)
+	addListener(query('#guozhao'), 'click', event_guozhao)
+	addListener(query('#blog'), 'click', event_blog)
+	each(queryAll('#navigation a'), function (item) {
+		item.style.position = 'fixed'
+		item.style.top = '0'
+		item.style.left = '0'
+	})
+	change()
+}
+function event_resize(e) {
+	change()
+	setBox()
+}
+function event_guozhao(e){
+	alert('才没有果照给你看呢……哼！')
+	e.preventDefault()
+}
+function event_blog(e){
+	showArticles()
+	e.preventDefault()
+}
+function event_guestbook(e) {
+	showGuestBook()
+	e.preventDefault()
+}
 function change() {
-	each(queryAll('li>a'), function (item) {
-		var rgba = randomRGBA()
+	each(queryAll('#navigation a'), function (item) {
+		var rgba = randomRGBA(), width = item.datawidth
+		if(!width){
+			width = item.datawidth = item.clientWidth
+		}
+		item.style.top = width + (html.clientHeight - 3 * width) * Math.random() + 'px'
+		item.style.left = width + (html.clientWidth - 3 * width) * Math.random()  + 'px'
+		item.style.zIndex = parseInt(100 * Math.random())
+		width *= Math.random() * 2 + 1
+		item.style.width = 
+		item.style.height = 
+		item.style.lineHeight = width + 'px'
+		item.style.borderRadius = (2 * width ) + 'px'
 		item.style.color = 'rgba(' + rgba[0] + ',' + rgba[1] + ',' + rgba[2] + ',' + (0.3 * rgba[3] + 0.7) + ')'
 		item.style.borderColor = 'rgba(' + rgba[0] + ',' + rgba[1] + ',' + rgba[2] + ',' + (0.5 * rgba[3] + 0.25) + ')'
 		item.style.backgroundColor = 'rgba(' + rgba[0] + ',' + rgba[1] + ',' + rgba[2] + ',' + (0.25 * rgba[3]) + ')'
@@ -121,25 +174,116 @@ function change() {
 		item.style.mozTransform = 
 		item.style.oTransform = 
 			'rotate(' + 60*(Math.random()-0.5) + 'deg)'
-		move(item)
 	})
 }
-function move(item) {
-	var w = item.clientWidth
-	item.style.top = w + (html.clientHeight - 2 * w) * Math.random() + 'px'
-	item.style.left = w + (html.clientWidth - 2 * w) * Math.random()  + 'px'
-	item.style.zIndex = parseInt(100 * Math.random())
+function showBox(width, height) {
+	box.className = 'show'
+	setBox(width, height)
 }
-function randomRGBA(){
-	return [parseInt(255 * Math.random()), parseInt(255 * Math.random()), parseInt(255 * Math.random()), Math.random()]
+function setBox(width, height, box) {
+	box = box || window.box
+	width = width || box.datawidth
+	box.datawidth = width
+	if(width > document.documentElement.clientWidth){
+		width = document.documentElement.clientWidth
+	}
+	box.style.width = width + 'px'
+	box.style.marginLeft = (-width / 2) + 'px'
+	height = height || box.dataheight
+	box.dataheight = height
+	if(height > document.documentElement.clientHeight){
+		height = document.documentElement.clientHeight
+	}
+	box.style.height = height + 'px'
+	box.style.marginTop = (box.className == 'hide' ? -5000 : (-height / 2)) + 'px'
+}
+function hideBox(box) {
+	box = box || window.box
+	box.className = 'hide'
+	setBox(480, 320, box)
+}
+function removeContent() {
+	var last = box.lastChild
+	if(last && last.id != 'box_close'){
+		box.removeChild(last)
+	}
+}
+function showArticles() {
+	removeContent()
+	appendEl(box, content_archives)
+	showBox()
+}
+function showGuestBook() {
+	removeContent()
+	appendEl(box, content_guestbook)
+	showBox(960,640)
+}
+function createBox(){
+	var box = newEl('div'), close = newEl('div')
+	box.id = 'box'
+	addText(close, 'close')
+	close.id = 'box_close'
+	addListener(close, 'click', function () {
+		hideBox()
+	})
+	appendEl(box, close)
+	appendEl(document.body, box)
+	hideBox(box)
+	return box
+}
+function createHiddenArea(){
+	var content = newEl('div')
+	content.style.display = 'none'
+	appendEl(document.body, content)
+	return content
+}
+function createArchives(){
+	var content = newEl('section')
+	content.id = 'box_content'
+	appendEl(hidden, content)
+	appendScript('jsonp.js')
+	return content
+}
+function createGuestBook() {
+	var content = newEl('div')
+	content.id = "disqus_thread"
+	appendScript('//' + disqus_shortname + '.disqus.com/embed.js')
+	appendEl(hidden, content)
+	return content
+}
+
+function callback_archive(data) {
+	data.entries.pop()
+	var ul = newEl('ul')
+	times(Math.min(10, data.entries.length), function (i) {
+		var entry = data.entries[i]
+		var li = newEl('li')
+		li.innerHTML = '<a href="' + entry.link + '" title="' + entry.title + '"><time pubdate datetime="' + entry.updated + '"></time>' + entry.title + '</a>'
+		appendEl(ul, li)
+	})
+	appendEl(content_archives, ul)
+	return true
 }
 
 //sweet suger...
 function query(name) {return document.querySelector(name)}
 function queryAll(name) {return document.querySelectorAll(name)}
+function newEl(name) {return document.createElement(name)}
+function appendEl(target, child) {target.appendChild(child)}
+function newText(text) {return document.createTextNode(text)}
+function addText(target, text) {target.appendChild(newText(text))}
+function appendScript(src) {
+	var script = newEl('script')
+	script.src = src
+	script.async = true
+	script.charset = 'UTF-8'
+	appendEl(document.body, script)
+}
+
 function addListener(element,e,fn) {
-	if(element.addEventListener) element.addEventListener(e,fn,false)
-	else element.attachEvent("on" + e,fn)
+	if(element.addEventListener) element.addEventListener(e, fn, false)
+	else if(element.attachEvent) element.attachEvent('on' + e, fn)
+	else element['on' + e] = fn
 }
 function each(obj, iterator, context) {
 	var nativeForEach = Array.prototype.forEach, breaker = {}
@@ -162,8 +306,10 @@ function times(n, iterator, context) {
 	for (var i = 0; i < n; i++) accum[i] = iterator.call(context, i)
 	return accum
 }
-})()
+function randomRGBA(){
+	return [parseInt(255 * Math.random()), parseInt(255 * Math.random()), parseInt(255 * Math.random()), Math.random()]
+}
+
 </script>
-<!--我才不告诉你我是抄的 http://qinshou.me/ 的呢！！-->
 </body>
 </html>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 
+title: start
 tags: [local, jekyll, ruby, bug]
 categories: site
 ---
