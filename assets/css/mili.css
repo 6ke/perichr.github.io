@@ -42,7 +42,7 @@ article{
 	content:"]"
 }
 
-article .metas{
+article .meta{
 	list-style:none;
 	font-size:0.8em;
 	margin:0 1em 0 0;
@@ -50,23 +50,25 @@ article .metas{
 	display:inline;
 	color: gray;
 }
-article .metas li:first-child:before{
+article .meta li:first-child:before{
 	content:"// ";
 }
-article .metas li{
+article .meta li{
 	display:inline;
 }
-article .metas span{
+article .meta span{
 	font-size:0.8em;
 	vertical-align:super;
 }
-article .metas span:before{
+article .meta span:before{
 	content:"(";
 }
-article .metas span:after{
+article .meta span:after{
 	content:")";
 }
-
+#disqus_thread{
+	margin:3em 0 0 0;
+}
 
 nav{
 	position: fixed;
@@ -337,7 +339,7 @@ h1, h2, h3, h4, h5, h6{
 	color:silver;
 }
 h1,h2,h3,h4,h5,h6 {
-    line-height:1;font-family:Arial,sans-serif;margin:1.4em 0 0.8em;
+    line-height:1;font-family:Arial,sans-serif;margin:1.2em 0 0.4em;
 }
 h1{
 	font-size:3em;
@@ -345,9 +347,9 @@ h1{
 	text-align: center;
 }
 
-h2{font-size:2.4em;}
-h3{font-size:2.0em;}
-h4{font-size:1.4em;}
+h2{font-size:1.6em;}
+h3{font-size:1.4em;}
+h4{font-size:1.2em;}
 h5,h6{font-size:1em;}
 a{
 	color: gray;
@@ -359,5 +361,5 @@ p, pre, ul, ol, dl, form, hr {
     margin:1em 0 0.6em;
 }
 aside{
-    margin:1em 0 0.6em;
+    margin:3em 0 0 0;
 }

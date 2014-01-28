@@ -6,13 +6,13 @@ type: post
 <header>
 	<h1>{{ page.title }}</h1>
 	{% unless page.categories == empty %}
-		<ul id="cates" class="metas">
+		<ul id="cates" class="meta">
 			{% assign categories_list = page.categories %}
 			{% include mod/categories_list %}
 		</ul>
 	{% endunless %}	
 	{% unless page.tags == empty %}
-		<ul id="tags" class="metas">
+		<ul id="tags" class="meta">
 			{% assign tags_list = page.tags %}
 			{% include mod/tags_list %}
 		</ul>
@@ -27,5 +27,5 @@ type: post
 		{% endfor %}
 	</ul>
 </aside>
-<section>{% include comments.html %}</section>
+{% include comments.html %}
 </article>
