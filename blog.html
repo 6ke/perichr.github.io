@@ -1,13 +1,26 @@
 ---
-layout: html5
-title: 首页
-type: index
+layout: nil
 ---
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--[if lt IE 9]><script src="assets/js/htmlshiv.js"></script><![endif]-->
+<link href="{{ site.url.production }}/assets/css/blog_index.css"  rel="stylesheet" />
+<title>{{ page.title }} @ {{ site.title }}</title>
+</head>
+<body>
+<header id="siteinfo">
+	<div id="title"><a title="{{ site.title }}" href="{{ site.url.production }}" rel="me">{{ site.title }}</a></div>
+	<p id="description">{{ site.description }}</p>
+</header>
 <section>
-{% for post in site.posts %}
+{% for post in site.posts limit:5 %}
 <article pubdate="{{ post.date }}">
-<h1><a href="index/..{{ post.url }}">{{ post.title }}</a></h1>
-{{ post.content }}
+<h1><a href="p/..{{ post.url }}">{{ post.title }}</a></h1>
 </article>
 {% endfor %}
 </section>
+{% include aside.html %}
+</body>
+</html>

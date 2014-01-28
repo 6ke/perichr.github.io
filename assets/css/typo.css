@@ -1,141 +1,16 @@
-@charset "utf-8";
-*{
-	box-sizing: border-box;
-	-moz-box-sizing:border-box;
-}
-html{
-	height:100%;
-	margin:0;
-	padding:0;
-	background: white url(bg.png) repeat scroll top;
-}
-body{
-	margin:0 auto;
-	padding:0;
-	width:60em;
-	height:100%;
-	text-align:center;
-	font-family: "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; 
-}
-
-
-#siteinfo{
-	display:none;
-}
-
-article{
-	text-align:left;
-	margin:0 0 3em 0;
-	padding:.1em 1em 1em 1em;
-}
-
-#cates a:before{
-	content:"["
-}
-#cates a:after{
-	content:"]"
-}
-#tags a:before{
-	content:"["
-}
-#tags a:after{
-	content:"]"
-}
-
-article .metas{
-	list-style:none;
-	font-size:0.8em;
-	margin:0 1em 0 0;
-	padding:0;
-	display:inline;
-	color: gray;
-}
-article .metas li:first-child:before{
-	content:"// ";
-}
-article .metas li{
-	display:inline;
-}
-article .metas span{
-	font-size:0.8em;
-	vertical-align:super;
-}
-article .metas span:before{
-	content:"(";
-}
-article .metas span:after{
-	content:")";
-}
-
-
-nav{
-	position: fixed;
-	left:0;
-	right:0;
-	bottom:1em;
-	background: white;
-}
-nav ul{
-	list-style: none;
-	margin:0;
-}
-nav li{
-	display: inline-block;
-	border-right:0.1em solid silver;
-}
-nav li:last-child{
-	border-right:none;
-}
-nav a{
-	color: silver;
-	text-decoration: none;
-	display: inline-block;
-	padding:0.2em 1em;
-}
-nav li:nth-child(7) a{
-	padding:0.2em 0.5em;
-}
-nav a:hover{
-	color: white;
-	background: silver;
-}
-
-#copyright{
-	position: fixed;
-	left:0;
-	right:0;
-	bottom:0;
-	padding:0 .2em;
-	font-size:0.8em;
-	background: silver;
-	color:gray;
-}
-#copyright a{
-	color: white;
-	text-decoration: none;
-	padding:.1em .2em;
-}
-#copyright a:hover{
-	color: gray;
-	background: white;
-}
-
-
-/*
-修改自Typo.css。
-TYPO.CSS 基于 MIT License 开源：http://typo.sofish.de/license.txt
-*/
+﻿@charset "utf-8";
 
 /* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
 html {
     color: #444333;
+    background: #fff;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-rendering: optimizelegibility;
 }
 
 /* 内外边距通常让各个浏览器样式的表现位置不同 */
-dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     margin: 0;
     padding: 0;
 }
@@ -236,6 +111,11 @@ address, caption, cite, code, dfn, em, th, var {
     font-weight: 400;
 }
 
+/* 去掉列表前的标识, li 会继承，大部分网站通常用列表来很多内容，所以应该当去 */
+ul, ol {
+    list-style: none;
+}
+
 /* 对齐是排版最重要的因素, 别让什么都居中 */
 caption, th {
     text-align: left;
@@ -274,11 +154,11 @@ ins, a {
 
 /* 专名号：虽然 u 已经重回 html5 Draft，但在所有浏览器中都是可以使用的，
  * 要做到更好，向后兼容的话，添加 class="typo-u" 来显示专名号
- * 关于 <u> 标签：http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-u-element
+ * 关于 &lt;u&gt; 标签：http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-u-element
  * 被放弃的是 4，之前一直搞错 http://www.w3.org/TR/html401/appendix/changes.html#idx-deprecated
- * 一篇关于 <u> 标签的很好文章：http://html5doctor.com/u-element/ 
+ * 一篇关于 &lt;u&gt; 标签的很好文章：http://html5doctor.com/u-element/ 
  */
-u {
+u, .typo-u {
     text-decoration: underline;
 }
 
@@ -311,6 +191,7 @@ hr{
 
 /* 底部印刷体、版本等标记 */
 small, .typo-small, 
+
 /* 图片说明 */
 figcaption {
     font-size: 0.9em;
@@ -321,6 +202,107 @@ figcaption {
 [draggable] {
     cursor: move;
 }
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both
+}
+
+.clearfix {
+    zoom: 1
+}
+
+/* 强制文本换行 */
+.textwrap, .textwrap td, .textwrap th{
+    word-wrap:break-word;
+    word-break:break-all;
+}
+.textwrap-table{
+    table-layout:fixed;
+}
+
+/* 提供 serif 版本的字体设置 */
+.serif{font-family:Palatino, Hiragino Mincho ProN W3, Optima, STSong, Georgia, serif;}
+
+/* 保证块/段落之间的空白隔行 */
+.typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table,
+.typo-p, .typo-pre, .typo-ul, .typo-ol, .typo-dl, .typo-form, .typo-hr, .typo-table {
+    margin-bottom: 1.2em;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: 500;
+    *font-weight: 800;
+    font-family: Helvetica Neue, Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
+    color:#333;
+}
+
+/* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
+.typo h1, .typo h2, .typo h3, .typo h4, .typo h5, .typo h6,
+.typo-h1, .typo-h2, .typo-h3, .typo-h4, .typo-h5, .typo-h6 {
+    margin-bottom: 0.4em;
+    line-height: 1.5;
+}
+.typo h1, .typo-h1 {
+    font-size: 1.8em;
+}
+.typo h2, .typo-h2 {
+    font-size: 1.6em;
+}
+.typo h3, .typo-h3 {
+    font-size: 1.4em;
+}
+.typo h4, .typo-h4 {
+    font-size: 1.2em;
+}
+.typo h5, .typo h6, .typo-h5, .typo-h6 {
+    font-size: 1em;
+}
+
+/* 在文章中，应该还原 ul 和 ol 的样式 */
+.typo ul, .typo-ul {
+    margin-left: 1.3em;
+    list-style: disc;
+}
+.typo ol, .typo-ol {
+    list-style: decimal;
+    margin-left: 1.9em;
+}
+.typo li ul, .typo li ol, .typo-ul ul, .typo-ul ol, .typo-ol ul, .typo-ol ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 2em;
+}
+.typo li ul, .typo-ul ul, .typo-ol ul {
+    list-style: circle;
+}
+
+/* 同 ul/ol，在文章中应用 table 基本格式 */
+.typo table th, .typo table td, .typo-table th, .typo-table td .typo table caption{
+    border: 1px solid #ddd;
+    padding: 0.5em 1em;
+    color:#666;
+}
+.typo table th, .typo-table th {
+    background: #fbfbfb;
+}
+.typo table thead th, .typo-table thead th {
+    background: #f1f1f1;
+}
+.typo table caption {
+    border-bottom:none;
+}
+
+/* 去除 webkit 中 input 和 textarea 的默认样式  */
+.typo-input, .typo-textarea{
+    -webkit-appearance:none;
+    border-radius:0;
+}
+
 /* 高亮选中 */
 ::-moz-selection {
     background:#08c;
@@ -330,34 +312,6 @@ figcaption {
     background:#08c;
     color:#fff;
 }
-h1, h2, h3, h4, h5, h6{
-    font-weight: 500;
-    *font-weight: 800;
-    font-family: Helvetica Neue, Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
-	color:silver;
-}
-h1,h2,h3,h4,h5,h6 {
-    line-height:1;font-family:Arial,sans-serif;margin:1.4em 0 0.8em;
-}
-h1{
-	font-size:3em;
-	font-weight:bolder;
-	text-align: center;
-}
 
-h2{font-size:2.4em;}
-h3{font-size:2.0em;}
-h4{font-size:1.4em;}
-h5,h6{font-size:1em;}
-a{
-	color: gray;
-}
-p{
-	text-indent: 2em;
-}
-p, pre, ul, ol, dl, form, hr {
-    margin:1em 0 0.6em;
-}
-aside{
-    margin:1em 0 0.6em;
-}
+/* TODO: 供着重号使用 */
+.typo-em, .typo em, legend, caption {font-weight: 700;}

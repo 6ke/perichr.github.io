@@ -1,0 +1,100 @@
+body{
+	background: white url(bg.png) repeat scroll top;
+	text-align:center;
+	font-family: '微软雅黑', '黑体', Verdana;
+	margin:0 auto;
+	padding:3.5em 0;
+	width:48em;
+}
+a{
+	text-decoration: none;
+	color: silver;
+}
+a:hover{
+	color: red;
+}
+#siteinfo{
+	margin-bottom:3em;
+}
+#description{
+	font-style:italic;
+	color:gray;
+}
+#description:before{
+	content:'//';
+}
+#title a{
+	font-size:3em;
+	color:silver;
+	font-weight:bolder;
+}
+#title a:hover{
+	text-decoration: underline;
+}
+section h1{
+	margin:0;
+}
+section a{
+	font-size:2em;
+	color:silver;
+}
+section a:hover{
+	color:gray;
+	text-shadow:.1em .1em .05em silver;
+}
+section a:hover:before{
+	content:'{ ';
+}
+section a:hover:after{
+	content:' }';
+}
+
+nav{
+	position: fixed;
+	left:0;
+	right:0;
+	bottom:1em;
+	background: white;
+}
+nav ul{
+	list-style: none;
+	margin:0;
+}
+nav li{
+	display: inline-block;
+	border-right:0.1em solid silver;
+}
+nav li:last-child{
+	border-right:none;
+}
+nav a{
+	display: inline-block;
+	padding:0.2em 1em;
+}
+nav li:nth-child(7) a{
+	padding:0.2em 0.5em;
+}
+nav a:hover{
+	color: white;
+	background: silver;
+}
+
+#copyright{
+	position: fixed;
+	left:0;
+	right:0;
+	bottom:0;
+	padding:0 .2em;
+	font-size:0.8em;
+	background: silver;
+	color:gray;
+}
+#copyright a{
+	color: white;
+	padding:.1em .2em;
+}
+#copyright a:hover{
+	color: gray;
+	background: white;
+}
+
