@@ -71,7 +71,7 @@ nav a{
 	display: inline-block;
 	padding:0.2em 1em;
 }
-nav li:nth-child(7) a{
+nav li:nth-child(6) a{
 	padding:0.2em 0.5em;
 }
 nav a:hover{

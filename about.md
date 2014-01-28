@@ -1,6 +1,6 @@
 ---
 layout: page
-title: about
+title: About || 关于
 ---
 试试运行这段javascript代码？
 
