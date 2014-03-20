@@ -66,6 +66,20 @@ article .meta span:before{
 article .meta span:after{
 	content:")";
 }
+aside ul{
+	list-style: none;
+}
+aside li{
+	display:inline-block;
+	width:50%;
+}
+aside li a{
+	padding:1em 2em;
+}
+aside time:after{
+	content:"|";
+}
+
 #disqus_thread{
 	margin:3em 0 0 0;
 }
