@@ -11,11 +11,12 @@ body{
 a{
 	text-decoration:none;	
 	font-weight:bolder;
-	color:gray;
+	color:silver;
 	transition:all .2s ease-in-out;
 }
 a:hover{
 	text-shadow: rgba(0,0,0,.3) 0 0 0.2em;
+	color:gray;
 }
 #links{
 /*
@@ -41,11 +42,9 @@ a:hover{
 	background: white;
 	border-radius:0;
 	font-size: 2em;
-	color:silver;
 }
 #links a:hover{
 	background: rgba(0,0,0,0.1);
-	color:gray;
 }
 
 #navigate{
@@ -143,10 +142,8 @@ body>.dialog_content{
 #content_archives a{
 	display: block;
 	padding:.3em 0;
-	color:silver;
 }
 #content_archives a:hover{
-	color:gray;
 }
 #content_archives a:hover:before{
 	content:'{ '

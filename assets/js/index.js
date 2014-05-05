@@ -24,7 +24,7 @@ HTMLElement.prototype.__defineGetter__("currentStyle", function () {
 		o = this.Options
 
 		//添加留言板链接
-		f.qs('#links ul').innerHTML += '<li><a href="#" id="guestbook">GuestBook</a></li>'
+		f.qs('#links ul').innerHTML += '<li><a href="#disqus_thread" id="guestbook">GuestBook</a></li>'
 		CreateGustbook( )
 
 		CreateArchives( )
