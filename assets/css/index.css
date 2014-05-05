@@ -1,0 +1,156 @@
+@font-face{font-family:'Poiret One';font-style:normal;font-weight:400;src:local('Poiret One'),local('PoiretOne-Regular'),url(http://themes.googleusercontent.com/static/fonts/poiretone/v1/HrI4ZJpJ3Fh0wa5ofYMK8RsxEYwM7FgeyaSgU71cLG0.woff) format('woff')}
+html{
+}
+body{
+	margin:0;
+	padding:3em 0;
+	background: white url(../css/bg.png) repeat scroll top;
+	font-family: '微软雅黑', '黑体', Verdana;
+	text-align:center;
+}
+a{
+	text-decoration:none;	
+	font-weight:bolder;
+	color:gray;
+	transition:all .2s ease-in-out;
+}
+a:hover{
+	text-shadow: rgba(0,0,0,.3) 0 0 0.2em;
+}
+#links{
+/*
+	font-family: 'Poiret One', Verdana;
+*/
+}
+
+#links ul{
+	display: inline-block;
+	padding:0;
+	margin:0 auto;
+	list-style:none;
+	border:.5em solid rgba(0,0,0,0.1);
+}
+
+#links a{
+	top:0;
+	left:0;
+	display: block;
+	border:0 solid rgba(0,0,0,0.1);
+	padding:.3em 1em;
+	margin:0;
+	background: white;
+	border-radius:0;
+	font-size: 2em;
+	color:silver;
+}
+#links a:hover{
+	background: rgba(0,0,0,0.1);
+	color:gray;
+}
+
+#navigate{
+	position: fixed;
+	left:0;
+	right:0;
+	bottom:1.2em;
+	background: white;
+	font-size:75%;
+}
+#navigate ul{
+	list-style: none;
+	margin:0;
+}
+#navigate li{
+	display: inline-block;
+	border-right:0.1em solid silver;
+}
+#navigate li:last-child{
+	border-right:none;
+}
+#navigate a{
+	display: inline-block;
+	padding:0.2em 1em;
+}
+#navigate li:nth-child(6) a{
+	padding:0.2em 0.5em;
+}
+#navigate a:hover{
+	color: white;
+	background: silver;
+}
+
+#copyright{
+	position: fixed;
+	left:0;
+	right:0;
+	bottom:0;
+	padding:0 .2em;
+	background: silver;
+	color:gray;
+	font-size:75%;
+}
+#copyright a{
+	color: white;
+	padding:.1em .2em;
+}
+#copyright a:hover{
+	color: gray;
+	background: white;
+}
+
+
+body>.dialog_content{
+	display: none;
+}
+
+.hide{
+	display: none;
+}
+#dialog{
+	position: fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	margin: auto;
+	padding: 1em;
+	width:36em;
+	height:24em;
+	z-index:2;
+	border:.2em solid silver;
+	background-color: white;
+	overflow: scroll;
+}
+#dialog_background {
+	position: fixed;
+	background-color: white;
+	opacity: 0.5;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:1;
+}
+
+#content_archives {
+	font-size:2em;
+}
+#content_archives ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#content_archives a{
+	display: block;
+	padding:.3em 0;
+	color:silver;
+}
+#content_archives a:hover{
+	color:gray;
+}
+#content_archives a:hover:before{
+	content:'{ '
+}
+#content_archives a:hover:after{
+	content:' }'
+}
