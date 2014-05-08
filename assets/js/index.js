@@ -15,7 +15,7 @@ HTMLElement.prototype.__defineGetter__("currentStyle", function () {
  */
 
 (function(root, doc, perichr, undefined) {
-	var P = root[perichr], f, o, dialog, dialog_background, content_gusetbook,content_archives,
+	var P = root[perichr], f, o, dialog, dialog_background, content_gusetbook,content_archives,content_github,
 		p = {
 			id: 'index.js'
 		}
@@ -28,6 +28,7 @@ HTMLElement.prototype.__defineGetter__("currentStyle", function () {
 		CreateGustbook( )
 
 		CreateArchives( )
+		CreateGitHub( )
 		
 		//添加对话框
 		CreateDialog( )
@@ -38,6 +39,7 @@ HTMLElement.prototype.__defineGetter__("currentStyle", function () {
 		f.on(f.id('guozhao'), 'click', on_click_guozhao)
 		f.on(f.id('guestbook'), 'click', on_click_guestbook)
 		f.on(f.id('blog'), 'click', on_click_blog)
+		f.on(f.id('github'), 'click', on_click_github)
 	}
 	
 	P.Load(p)
@@ -53,15 +55,34 @@ HTMLElement.prototype.__defineGetter__("currentStyle", function () {
 				callback:'callback_archive'
 			},
 			success: function (data) {
-			data.entries.pop()
-			var ul = f.element('ul'), times = Math.min(10, data.entries.length)
-			f.times(times, function (i) {
-				var entry = data.entries[i]
-				var li = f.element('li')
-				li.innerHTML = '<a href="' + entry.link + '" title="' + entry.title + '"><time pubdate datetime="' + entry.updated + '"></time>' + entry.title + '</a>'
-				f.append(ul, li)
-			})
-			f.append(content_archives, ul)
+				data.entries.pop()
+				var ul = f.element('ul'), times = Math.min(10, data.entries.length)
+				f.times(times, function (i) {
+					var entry = data.entries[i]
+					var li = f.element('li')
+					li.innerHTML = '<a href="' + entry.link + '" title="' + entry.title + '"><time pubdate datetime="' + entry.updated + '"></time>' + entry.title + '</a>'
+					f.append(ul, li)
+				})
+				f.append(content_archives, ul)
+			}
+		})
+		
+	}
+	function CreateGitHub( ){
+		f.append(doc.body, content_github = f.element('div', {
+			id: 'content_github',
+			'class': 'dialog_content'
+		}))
+		f.jsonp({
+			url: 'https://api.github.com/users/perichr/repos',
+			success: function (data) {
+				var ul = f.element('ul')
+				f.each(data.data, function(index,data){
+					var li = f.element('li')
+					li.innerHTML = '<a href="' + data.html_url + '" title="' + data.description + '">' + data.name + '</a>'
+					f.append(ul, li)
+				})
+				f.append(content_github, ul)
 			}
 		})
 		
@@ -114,5 +135,8 @@ HTMLElement.prototype.__defineGetter__("currentStyle", function () {
 		event.preventDefault( )
 		ShowDialog( content_archives )
 	}
-
+	function on_click_github( event ){
+		event.preventDefault( )
+		ShowDialog( content_github )
+	}
 })(window, document, '_perichr_')

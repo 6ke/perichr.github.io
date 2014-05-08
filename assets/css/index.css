@@ -131,23 +131,21 @@ body>.dialog_content{
 	z-index:1;
 }
 
-#content_archives {
+.dialog_content>ul{
 	font-size:2em;
-}
-#content_archives ul{
 	list-style:none;
 	margin:0;
 	padding:0;
 }
-#content_archives a{
+.dialog_content>ul a{
 	display: block;
 	padding:.3em 0;
 }
-#content_archives a:hover{
+.dialog_content>ul a:hover{
 }
-#content_archives a:hover:before{
+.dialog_content>ul a:hover:before{
 	content:'{ '
 }
-#content_archives a:hover:after{
+.dialog_content>ul a:hover:after{
 	content:' }'
 }

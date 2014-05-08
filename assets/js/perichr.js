@@ -1,6 +1,6 @@
 /** @license
  * @author <a href="mailto:i@perichr.org">perichr</a>
- * @version 1.0.0.3
+ * @version 1.0.0.4
  * @link http://perichr.org
  */
 (function(root, doc, perichr, undefined) {
@@ -414,7 +414,7 @@
 
 
 		/**
-		 * @name _perichr_Load
+		 * @name _perichr_.Load
 		 * @description 载入插件功能
 		 * @param {Object} plugin 插件对象
 		 */
