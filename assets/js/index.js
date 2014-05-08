@@ -24,7 +24,7 @@ HTMLElement.prototype.__defineGetter__("currentStyle", function () {
 		o = this.Options
 
 		//添加留言板链接
-		f.qs('#links ul').innerHTML += '<li><a href="#disqus_thread" id="guestbook">GuestBook</a></li>'
+		f.qs('#links ul').innerHTML += '<li><a href="https://disqus.com/home/discussion/perichr/devp_08" id="guestbook">GuestBook</a></li>'
 
 		CreateDialog( )
 		bindlink('guozhao', function(cb){
@@ -71,9 +71,11 @@ HTMLElement.prototype.__defineGetter__("currentStyle", function () {
 			f.jsonp({
 				url: 'https://api.github.com/users/perichr/repos',
 				success: function (data) {
-					var ul = f.element('ul')
+					var ul = f.element('ul'),li = f.element('li')
+					li.innerHTML = '<a href="' + data.data[0].owner.html_url + '" title="Follow me on github!"><img src="http://www.gravatar.com/avatar/' + data.data[0].owner.gravatar_id + '"/></a>'
+					f.append(ul, li)
 					f.each(data.data, function(index,data){
-						var li = f.element('li')
+						li = f.element('li')
 						li.innerHTML = '<a href="' + data.html_url + '" title="' + data.description + '">' + data.name + '</a>'
 						f.append(ul, li)
 					})
