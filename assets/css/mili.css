@@ -312,9 +312,16 @@ pre, code {
 pre {
     background: #f8f8f8;
     border:1px solid #ddd;
-    padding: 1em 1.5em;
+    padding:.5em 1em;
 }
-
+code {
+    border:1px solid #ddd;
+    padding: 0 .5em;
+}
+pre>code{
+    border:none;
+    padding:0;
+}
 /* 一致化 horizonal rule */
 hr{
     border:none;
