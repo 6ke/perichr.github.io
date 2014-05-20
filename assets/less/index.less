@@ -1,0 +1,81 @@
+@font-face{font-family:'Poiret One';font-style:normal;font-weight:400;src:local('Poiret One'),local('PoiretOne-Regular'),url(http://themes.googleusercontent.com/static/fonts/poiretone/v1/HrI4ZJpJ3Fh0wa5ofYMK8RsxEYwM7FgeyaSgU71cLG0.woff) format('woff')}
+
+@import "common.less";
+@import "nav.less";
+
+#links ul{
+	display: inline-block;
+	padding:0;
+	margin:0 auto;
+	list-style:none;
+	border:.5em solid rgba(0,0,0,0.1);
+}
+
+#links a{
+	top:0;
+	left:0;
+	display: block;
+	border:0 solid rgba(0,0,0,0.1);
+	padding:.3em 1em;
+	margin:0;
+	background: white;
+	border-radius:0;
+	font-size: 2em;
+}
+#links a:hover{
+	background: rgba(0,0,0,0.1);
+}
+
+
+body>.dialog_content{
+	display: none;
+}
+
+.hide{
+	display: none;
+}
+#dialog{
+	position: fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	margin: auto;
+	padding: 1em;
+	width:36em;
+	height:24em;
+	z-index:2;
+	border:.2em solid silver;
+	background-color: white;
+	overflow: scroll;
+}
+#dialog_background {
+	position: fixed;
+	background-color: white;
+	opacity: 0.5;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:1;
+}
+
+.dialog_content>ul{
+	font-size:2em;
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.dialog_content>ul a{
+	display: block;
+	padding:.3em 0;
+	white-space:nowrap;
+}
+.dialog_content>ul a:hover{
+}
+.dialog_content>ul a:hover:before{
+	content:'{ '
+}
+.dialog_content>ul a:hover:after{
+	content:' }'
+}

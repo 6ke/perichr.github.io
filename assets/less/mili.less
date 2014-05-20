@@ -1,0 +1,87 @@
+*{
+	box-sizing: border-box;
+	-moz-box-sizing:border-box;
+}
+
+@import "common.less";
+@import "nav.less";
+@import "article.less";
+@import "highlightja.github.less";
+
+html{
+	height:100%;
+	margin:0;
+	padding:0;
+	background: white url(bg.png) repeat scroll top;
+}
+body{
+	margin:0 auto;
+	width:60em;
+	height:100%;
+}
+
+
+#siteinfo{
+	display:none;
+}
+
+article{
+	text-align:left;
+	margin:0 0 3em 0;
+	padding:.1em 1em 1em 1em;
+}
+
+#cates a:before{
+	content:"["
+}
+#cates a:after{
+	content:"]"
+}
+#tags a:before{
+	content:"["
+}
+#tags a:after{
+	content:"]"
+}
+
+article .meta{
+	list-style:none;
+	font-size:0.8em;
+	margin:0 1em 0 0;
+	padding:0;
+	display:inline;
+	color: gray;
+}
+article .meta li:first-child:before{
+	content:"// ";
+}
+article .meta li{
+	display:inline;
+}
+article .meta span{
+	font-size:0.8em;
+	vertical-align:super;
+}
+article .meta span:before{
+	content:"(";
+}
+article .meta span:after{
+	content:")";
+}
+aside ul{
+	list-style: none;
+}
+aside li{
+	display:inline-block;
+	width:50%;
+}
+aside li a{
+	padding:1em 2em;
+}
+aside time:after{
+	content:"|";
+}
+
+#disqus_thread{
+	margin:3em 0 0 0;
+}

@@ -1,6 +1,5 @@
 markdown: rdiscount
 safe: false
-pygments: true
 excerpt_separator: "\n\n\n"
 
 title: DEV:P~!
