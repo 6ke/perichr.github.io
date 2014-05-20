@@ -140,6 +140,7 @@ body>.dialog_content{
 .dialog_content>ul a{
 	display: block;
 	padding:.3em 0;
+	white-space:nowrap;
 }
 .dialog_content>ul a:hover{
 }
