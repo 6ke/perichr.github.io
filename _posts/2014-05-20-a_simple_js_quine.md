@@ -55,7 +55,7 @@ p='console.log("perichr.org");console.log(p)';eval(p)
 eval(p='console.log("perichr.org");console.log(p)')
 ```
 
-接下来怎么办呢……来对比下上面的源码和输出的代码：`console.log("perichr.org");console.log(p)`，其实已经很接近了有木有！输出码就是缺少了头`eval(p=')`和尾`')`！来，补上！
+接下来怎么办呢……来对比下上面的源码和输出的代码：`console.log("perichr.org");console.log(p)`，其实已经很接近了有木有！输出码就是缺少了头`eval(p='`和尾`')`！来，补上！
 
 ```javascript
 eval(p='console.log("perichr.org");console.log("eval(p=\'"+p+"\')")')
