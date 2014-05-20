@@ -49,7 +49,7 @@ p='console.log("perichr.org")';eval(p);console.log(p)
 p='console.log("perichr.org");console.log(p)';eval(p)
 ```
 
-发现了吗？这次输出了`perichr.org`和`console.log("perichr.org");console.log(p)`！进化了！接下来先讨个巧，利用 #赋值表达式返回右值# 的小技巧来简化一下代码，毕竟代码越精简心理压力越小嘛……
+发现了吗？这次输出了`perichr.org`和`console.log("perichr.org");console.log(p)`！进化了！接下来先讨个巧，利用 **赋值表达式返回右值** 的小技巧来简化一下代码，毕竟代码越精简心理压力越小嘛……
 
 ```javascript
 eval(p='console.log("perichr.org");console.log(p)')
@@ -69,7 +69,7 @@ eval(p='console.log("perichr.org");console.log("eval(p=\'"+p+"\')")')
 eval(p='console.log("perichr.org");console.log("eval(p=\'"+p.replace(/\'/g,"\\\\\'")+"\')")')
 ```
 
-等等……好像有什么不对？我刚才是不是把一大波 #有用的反斜杠# 加入源代码了？要知道，这货也是会被转义的啊！！怎么办？好嘛，来改造下反转义代码，这回单引号和反斜杠都要反转义一下：`.replace(/[\\']/g,"\\$&")`，这里的`$&`是指返回匹配字符串。手动反转义：`.replace(/[\\\\\']/g,"\\\\$&")`，再来一次：
+等等……好像有什么不对？我刚才是不是把一大波 **有用的反斜杠** 加入源代码了？要知道，这货也是会被转义的啊！！怎么办？好嘛，来改造下反转义代码，这回单引号和反斜杠都要反转义一下：`.replace(/[\\']/g,"\\$&")`，这里的`$&`是指返回匹配字符串。手动反转义：`.replace(/[\\\\\']/g,"\\\\$&")`，再来一次：
 
 ```javascript
 eval(p='console.log("perichr.org");console.log("eval(p=\'"+p.replace(/[\\\\\']/g,"\\\\$&")+"\')")')
